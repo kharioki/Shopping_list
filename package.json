@@ -1,0 +1,26 @@
+{
+  "name": "shopping_list",
+  "version": "1.0.0",
+  "description": "Shopping list app built with the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kharioki/Shopping_list.git"
+  },
+  "keywords": [
+    "MERN",
+    "MongoDB",
+    "express",
+    "react",
+    "node"
+  ],
+  "author": "kharioki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kharioki/Shopping_list/issues"
+  },
+  "homepage": "https://github.com/kharioki/Shopping_list#readme"
+}
