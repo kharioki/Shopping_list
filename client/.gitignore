@@ -1,19 +1,15 @@
-node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# mongodb config
-config/keys.js
-
-# react app
 # dependencies
-client/node_modules
-client/.pnp
+/node_modules
+/.pnp
 .pnp.js
 
 # testing
-client/coverage
+/coverage
 
 # production
-client/build
+/build
 
 # misc
 .DS_Store
