@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +11,6 @@ const ShoppingList = () => {
     { id: uuidv4(), name: 'Water' }
   ]);
 
-  console.log({ items });
   return (
     <Container>
       <Button
@@ -32,7 +31,7 @@ const ShoppingList = () => {
             <CSSTransition key={id} timeout={500} classNames="fade">
               <ListGroupItem>
                 <Button
-                  className="remove"
+                  className="remove-btn"
                   color="danger"
                   size="sm"
                   onClick={() => {
