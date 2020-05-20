@@ -5,12 +5,15 @@ import './App.css';
 
 import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
+import ItemContextProvider from './contexts/ItemContext';
 
 function App() {
   return (
     <div className="App">
       <AppNavbar />
-      <ShoppingList />
+      <ItemContextProvider>
+        <ShoppingList />
+      </ItemContextProvider>
     </div>
   );
 }

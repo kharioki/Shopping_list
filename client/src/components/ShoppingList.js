@@ -1,10 +1,12 @@
-import React, { useReducer } from 'react';
+import React, { useContext } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ItemReducer } from '../reducers/ItemReducer';
+import { ItemContext } from '../contexts/ItemContext';
 
 const ShoppingList = () => {
-  const [items, dispatch] = useReducer(ItemReducer, []);
+  const { items, dispatch } = useContext(ItemContext);
+
+  console.log(items);
 
   return (
     <Container>
