@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { v4 as uuidv4 } from 'uuid';
+import { ItemReducer } from '../reducers/ItemReducer';
 
 const ShoppingList = () => {
-  const [items, setItems] = useState([
-    { id: uuidv4(), name: 'Eggs' },
-    { id: uuidv4(), name: 'Milk' },
-    { id: uuidv4(), name: 'Steak' },
-    { id: uuidv4(), name: 'Water' }
-  ]);
+  const [items, dispatch] = useReducer(ItemReducer, []);
 
   return (
     <Container>
@@ -19,7 +14,7 @@ const ShoppingList = () => {
         onClick={() => {
           const name = prompt('Enter Item');
           if (name) {
-            setItems([...items, { id: uuidv4(), name }]);
+            dispatch({ type: 'ADD_ITEM', name });
           }
         }}
       >
@@ -34,9 +29,7 @@ const ShoppingList = () => {
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => {
-                    setItems(items.filter(item => item.id !== id));
-                  }}
+                  onClick={() => dispatch({ type: 'REMOVE_ITEM', id })}
                 >
                   &times;
                 </Button>
