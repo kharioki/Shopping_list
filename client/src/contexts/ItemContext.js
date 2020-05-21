@@ -1,24 +1,22 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 import { ItemReducer } from '../reducers/ItemReducer';
 
 export const ItemContext = createContext();
 
-const initialState = [
-  { id: uuidv4(), name: 'Eggs' },
-  { id: uuidv4(), name: 'Milk' },
-  { id: uuidv4(), name: 'Steak' },
-  { id: uuidv4(), name: 'Water' }
-];
+const initialState = [];
 
 export default function ItemContextProvider(props) {
+  // const [loading, setLoading] = useState(false);
   const [items, dispatch] = useReducer(ItemReducer, initialState);
 
   useEffect(() => {
-    console.log('called');
-    dispatch({ type: 'GET_ITEMS' });
-  }, [items]);
+    axios
+      .get('/api/items')
+      .then(({ data }) => dispatch({ type: 'GET_ITEMS', payload: data }))
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <ItemContext.Provider value={{ items, dispatch }}>
