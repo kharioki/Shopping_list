@@ -10,18 +10,6 @@ const ShoppingList = () => {
 
   return (
     <Container>
-      <Button
-        color="dark"
-        style={{ marginBottom: '2rem' }}
-        onClick={() => {
-          const name = prompt('Enter Item');
-          if (name) {
-            dispatch({ type: 'ADD_ITEM', name });
-          }
-        }}
-      >
-        Add Item
-      </Button>
       <ListGroup>
         <TransitionGroup className="shopping-list">
           {items.map(({ id, name }) => (
