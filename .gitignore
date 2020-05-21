@@ -1,7 +1,7 @@
 node_modules
 
 # mongodb config
-config/keys.js
+# config/keys.js
 
 # react app
 # dependencies
