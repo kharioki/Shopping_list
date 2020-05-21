@@ -1,10 +1,22 @@
 import React, { useContext } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import axios from 'axios';
+
 import { ItemContext } from '../contexts/ItemContext';
 
 const ShoppingList = () => {
   const { items, dispatch } = useContext(ItemContext);
+
+  const handleDelete = _id => {
+    // add to db
+    axios
+      .delete(`/api/items/${_id}`)
+      .then(res => {
+        dispatch({ type: 'REMOVE_ITEM', _id });
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <Container>
@@ -18,7 +30,7 @@ const ShoppingList = () => {
                     className="remove-btn"
                     color="danger"
                     size="sm"
-                    onClick={() => dispatch({ type: 'REMOVE_ITEM', id: _id })}
+                    onClick={() => handleDelete(_id)}
                   >
                     &times;
                   </Button>

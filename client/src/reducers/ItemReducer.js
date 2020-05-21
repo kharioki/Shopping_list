@@ -7,7 +7,7 @@ export const ItemReducer = (state, action) => {
     case 'ADD_ITEM':
       return [action.payload, ...state];
     case 'REMOVE_ITEM':
-      return state.filter(item => item.id !== action.id);
+      return state.filter(item => item._id !== action._id);
 
     default:
       return state;
