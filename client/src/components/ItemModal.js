@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import {
   Button,
   Modal,
@@ -21,7 +22,19 @@ export default function ItemModal() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch({ type: 'ADD_ITEM', name });
+
+    const newItem = {
+      name
+    };
+    // add to db
+    axios
+      .post('/api/items', newItem)
+      .then(({ data }) => {
+        dispatch({ type: 'ADD_ITEM', payload: data });
+      })
+      .catch(err => console.log(err));
+
+    // close modal
     toggle();
   };
 

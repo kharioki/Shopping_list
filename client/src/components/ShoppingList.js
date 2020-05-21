@@ -6,8 +6,6 @@ import { ItemContext } from '../contexts/ItemContext';
 const ShoppingList = () => {
   const { items, dispatch } = useContext(ItemContext);
 
-  console.log({ items });
-
   return (
     <Container>
       <ListGroup>
